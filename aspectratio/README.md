@@ -7,6 +7,8 @@ One of the things I really missed from Windower after switching over was the abi
 /addon unload aspectratio # this unloads the addon, but it does not revert your aspect ratio to a default one, it will change back on zoning
 ```
 
+You can also add `/addon load aspectratio` to your `scripts/Default.txt` in your ashita folder to have it load automatically when you launch the game.
+
 ## Addon commands
 ```
 /ar                    # the same as the help command
