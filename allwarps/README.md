@@ -9,3 +9,5 @@ It has not settings or options.
 /addon load allwarps # this gives access to all warps
 /addon unload allwarps # this will remove acess to all warps
 ```
+
+You can also add `/addon load allwarps` to your `scripts/Default.txt` in your ashita folder to have it load automatically when you launch the game.
