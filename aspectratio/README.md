@@ -22,7 +22,3 @@ You can also add `/addon load aspectratio` to your `scripts/Default.txt` in your
   "ratio": <string: aspectratio> # "21:9", "16:9", "123456:1" (good luck playing like that), etc.
 }
 ```
-
-## Known Issues
-1. Aspect Ratio Changes Too Late After Zoning
-    - In most zones, the game tells the server that you've zoned in before the black screen ends. In such cases the addon works fine. In some zones (Jeuno, Adoulin, Qufim, etc.) the game will display the zone before it's told the server you've zoned in. When this happens, your game will be the original aspect ratio you have chosen in the menu for ~1s and then pop back to the aspect ratio you've chosen.
