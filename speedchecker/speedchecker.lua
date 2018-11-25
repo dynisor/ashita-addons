@@ -11,7 +11,8 @@ local default_config =
         family      = 'Arial',
         size        = 12,
         color_argb  = { 255, 255, 0, 0 },
-        position    = { -10, 1 }
+        position    = { -10, 1 },
+        bold        = false
     },
     format = '%d%%'
 };
@@ -35,6 +36,7 @@ ashita.register_event('load', function()
     f:SetFontHeight(sc_config.font.size);
     f:SetPositionX(sc_config.font.position[1]);
     f:SetPositionY(sc_config.font.position[2]);
+    f:SetBold(sc_config.font.bold);
     f:SetRightJustified(true);
     f:SetText('');
     f:SetVisibility(sc.show);
@@ -53,6 +55,7 @@ ashita.register_event('render', function()
 
     -- Calculate the current sc..
     local me = GetPlayerEntity()
+    if (me == nil) then return; end
     sc.speed = 100 * me.Speed / 5 - 100
 
     -- Update the sc font..
