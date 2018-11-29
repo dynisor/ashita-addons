@@ -1,6 +1,6 @@
 _addon.version = '1.63'
-_addon.name = 'Parse'
-_addon.author = 'F'
+_addon.name = 'Parse (Ashita Port)'
+_addon.author = 'dynu (orig. F)'
 
 require 'common';
 require 'windower.shim'
