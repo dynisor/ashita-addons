@@ -1,0 +1,12 @@
+{
+    "font": {
+        "color_argb": [ 255, 255, 0, 0],
+        "family": "Arial",
+        "position": [ 200, 200 ],
+        "size": 12
+    },
+    "background": {
+        "color_argb": [ 255, 0, 0, 0 ],
+        "visible": true
+    }
+}
