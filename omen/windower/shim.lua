@@ -163,7 +163,6 @@ EVENT_ADDON_CMD = 'addon command'
 EVENT_INC_TEXT  = 'incoming text'
 EVENT_INC_CHUNK = 'incoming chunk'
 EVENT_OUT_CHUNK = 'outgoing chunk'
-EVENT_ZONE_CHANGE = 'zone change'
 
 local handlers_by_event = {}
 local handlers_by_id = {}
@@ -351,21 +350,6 @@ windower.register_event = function(...)
                 return false
             end)
         end
-
-        if event == EVENT_ZONE_CHANGE and #handlers_by_event[EVENT_ZONE_CHANGE] == 1 then
-            local old_zone_id = nil
-            local curr_zone_id = windower.ffxi.get_info().zone
-            windower.register_event(EVENT_INC_CHUNK, function (id,original)
-                if id == 0x00A then
-                    old_zone_id = curr_zone_id
-                    curr_zone_id = original:unpack("H", 0x31)
-
-                    for _, handler in pairs(handlers_by_event[EVENT_ZONE_CHANGE]) do
-                        handler(curr_zone_id, old_zone_id)
-                    end
-                end
-            end)
-        end
     end
 
     return id
@@ -386,11 +370,12 @@ end
 
 local change_handlers = {
     ['status'] = function() return GetPlayerEntity().Status end,
-    ['hp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHP(0) end,
-    ['mp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMP(0) end,
-    ['tp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentTP(0) end,
-    ['hpp']    = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHPP(0) end,
-    ['mpp']    = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMPP(0) end,
+    ['hp']      = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHP(0) end,
+    ['mp']      = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMP(0) end,
+    ['tp']      = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentTP(0) end,
+    ['hpp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHPP(0) end,
+    ['mpp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMPP(0) end,
+    ['zone']    = function() return windower.ffxi.get_info().zone end,
 }
 local current_change_values = {}
 
@@ -982,5 +967,5 @@ windower.ffxi.get_mob_by_target = function(target)
 end
 
 windower.play_sound = function(path)
-    ashita.misc.play_sound(path)
+    return ashita.misc.play_sound(path)
 end

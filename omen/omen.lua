@@ -24,8 +24,8 @@
 -- (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-_addon.name    = 'Omen (Ashita Port)'
-_addon.author  = 'dynu (orig. Braden, Sechs)'
+_addon.name    = 'Omen'
+_addon.author  = 'Braden, Sechs'
 _addon.version = '1.5'
 _addon.command = 'omen'
 
@@ -124,6 +124,7 @@ windower.register_event('prerender', function()
 end)
 
 windower.register_event('zone change', function(zone, old_zone)
+    if old_zone then print('new: ' .. zone .. ' old: ' .. old_zone) end
     image:hide()
     floor_obj = "Waiting for objectives..."
     reset_objectives()
@@ -169,9 +170,9 @@ windower.register_event('incoming text', function(original, modified, mode)
         elseif string.find(original,"A spectral light flares up.") then
             floor_clear = good_col
             refresh()
-            windower.play_sound(windower.addon_path..'big_clear.wav')
+            --windower.play_sound(windower.addon_path..'big_clear.wav')
         elseif string.find(original,"A faint light twinkles into existence.") then
-            windower.play_sound(windower.addon_path..'small_clear.wav')
+            --windower.play_sound(windower.addon_path..'small_clear.wav')
         elseif string.find(original,"Vanquish") or string.find(original,"Open %d treasure portent") then
             local str1 = string.gsub(original,string.char(0x7f).."1","")
             local str1 = string.gsub(str1,"%p","")			

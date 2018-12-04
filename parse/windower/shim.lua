@@ -370,11 +370,16 @@ end
 
 local change_handlers = {
     ['status'] = function() return GetPlayerEntity().Status end,
-    ['hp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHP(0) end,
-    ['mp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMP(0) end,
-    ['tp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentTP(0) end,
-    ['hpp']    = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHPP(0) end,
-    ['mpp']    = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMPP(0) end,
+    ['hp']      = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHP(0) end,
+    ['mp']      = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMP(0) end,
+    ['tp']      = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentTP(0) end,
+    ['hpp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentHPP(0) end,
+    ['mpp']     = function() return AshitaCore:GetDataManager():GetParty():GetMemberCurrentMPP(0) end,
+    ['zone']    = function() return windower.ffxi.get_info().zone end,
+    ['weather'] = function() return ashita.ffxi.weather.get_weather() end,
+    ['job']     = function() return ashita.ffxi.weather.get_weather() end,
+    ['time']    = function() return ashita.ffxi.vanatime.get_current_time() end,
+    ['moon']    = function() return ashita.ffxi.vanatime.get_current_date().moon_phase end,
 }
 local current_change_values = {}
 
@@ -963,4 +968,8 @@ windower.ffxi.get_mob_by_target = function(target)
 --    print('windower.ffxi.get_mob_by_target ' .. target)
     local t = string.match(target, '<?(%a+)>?')
     return map_entity(ashita.ffxi.targets.get_target(t))
+end
+
+windower.play_sound = function(path)
+    return ashita.misc.play_sound(path)
 end

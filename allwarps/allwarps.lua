@@ -1,4 +1,4 @@
-_addon.author   = 'dynisor (orig. Ivaar)'
+_addon.author   = 'Ivaar'
 _addon.name     = 'AllWarps'
 _addon.version  = '1.0'
 

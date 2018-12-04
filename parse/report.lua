@@ -113,23 +113,31 @@ function report_data(stat,ability,chatmode,chattarget)
 	line_cap = 90
 	report_table = report_string:split('| ')
 	report_table['n'] = nil
-	
-	local delay = 0
+	chat_message = ''
+
 	for i,line in pairs(report_table) do
 		
 		if #line <= line_cap then
-			if chat_prefix then ashita.timer.once(delay, function() windower.send_command('input /'..chat_prefix..' '..line) end)
-			else message(line) end	
-			delay = delay + 2	
+			if chat_prefix then 
+				chat_message = chat_message..'input /'..chat_prefix..' '..line..';wait 1.5;'
+			else 
+				message(line)
+			end	
 		else
 			line_table = prepare_string(line,line_cap)
 			line_table['n'] = nil
 			for i,subline in pairs(line_table) do
-				if chat_prefix then ashita.timer.once(delay, function() windower.send_command('input /'..chat_prefix..' '..subline) end)
-				else message(subline) end
-				delay = delay + 2		
+				if chat_prefix then 
+					chat_message = chat_message..'input /'..chat_prefix..' '..subline..';wait 1.5;'
+				else 
+					message(subline) 
+				end
 			end
 		end
+	end
+
+	if chat_prefix then 
+		windower.send_command(chat_message)
 	end
 end
 
