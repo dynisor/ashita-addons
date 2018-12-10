@@ -1,5 +1,5 @@
-_addon.name = 'TRIBPLZ (Ashita Port)'
-_addon.author = 'dynu (orig. TRIBULENS)'
+_addon.name = 'TRIBPLZ'
+_addon.author = 'TRIBULENS'
 _addon.version = '1.0'
 
 require 'common'
