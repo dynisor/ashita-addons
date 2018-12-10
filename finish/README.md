@@ -1,8 +1,8 @@
-SpeedChecker
+Finish
 =====
-Shows a box that has your current speed percentage listed.
+Shows a box that has your current finishing moves.
 
 No commands. 
 
-LOAD: `/addon load speedchecker`  
-UNLOAD `/addon unload speedchecker`
+LOAD: `/addon load finish`  
+UNLOAD `/addon unload finish`
