@@ -158,7 +158,7 @@ ashita.register_event('command', function(command)
     if args[2] == 'report' then
 		report_data(args[3],args[4],args[5],args[6])
 	elseif (args[2] == 'filter' or args[2] == 'f') and args[2] then
-		edit_filters(args[2],args[3],args[4])
+		edit_filters(args[3],args[4],args[5])
 		update_texts()
 	elseif (args[2] == 'list' or args[2] == 'l') then
 		print_list(args[3])
